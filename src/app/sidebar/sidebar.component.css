@@ -1,0 +1,20 @@
+mat-sidenav {
+  background-color: ghostwhite;
+  width: 200px ;
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+mat-sidenav mat-navlist {
+  width: 100%;
+}
+
+a[mat-list-item] {
+  transition: background-color 0.5s ease;
+}
+
+a[mat-list-item]:hover {
+  background-color: azure;
+}
