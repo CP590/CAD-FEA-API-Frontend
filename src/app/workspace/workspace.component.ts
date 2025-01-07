@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CommunicationService} from '../communication.service';
 import {GeometryComponent} from '../geometry/geometry.component';
 import {HomeComponent} from '../home/home.component';
@@ -16,6 +16,7 @@ import {NgIf} from '@angular/common';
 })
 export class WorkspaceComponent implements OnInit {
   selectedComponent: string = 'Home';
+  @Input() beamList!: string[];
 
   constructor(private communicationService: CommunicationService) {
   }

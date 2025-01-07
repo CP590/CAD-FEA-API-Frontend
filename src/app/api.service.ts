@@ -15,7 +15,7 @@ export class ApiService {
   }
 
   getBeams(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/beams`);
+    return this.http.get(`${this.baseUrl}beams`);
   }
 
 }

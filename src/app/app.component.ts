@@ -14,6 +14,8 @@ import {ApiService} from './api.service';
 export class AppComponent implements OnInit {
   title = 'CAD-FEA-API';
   message = '';
+  beamList: string[] = [];
+  selectedBeam: string = '';
 
   constructor(private apiService: ApiService) {}
 
@@ -22,6 +24,19 @@ export class AppComponent implements OnInit {
       (response) => {
         this.message = response;
         console.log(this.message);
+      },
+      (error) => {
+        console.error('Error fetching message: ', error);
+      }
+    );
+
+    this.apiService.getBeams().subscribe(
+      (response) => {
+        if (response && response[0] && response[0].beam_list) {
+          this.beamList = response[0].beam_list
+            .map((beam: any[]) => beam[1]);
+          console.log(this.beamList);
+        }
       },
       (error) => {
         console.error('Error fetching message: ', error);
