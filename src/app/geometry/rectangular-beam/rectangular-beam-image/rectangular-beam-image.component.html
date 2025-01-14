@@ -1,0 +1,26 @@
+<svg class="rectangular_beam_image" width="300" height="200" viewBox="0 0 300 200"  style="border: 1px solid black;">
+  <!-- Static Beam Cross-Section -->
+  <rect x="50" y="50" width="100" height="100" fill="lightgray" stroke-width="2" />
+
+  <!-- Dynamic Dimension Labels -->
+  <!-- Horizontal Dimension -->
+  <text x="100" y="30" text-anchor="middle">
+    Width: {{ width }}mm
+  </text>
+  <!-- Vertical Dimension -->
+  <text x="165" y="100" text-anchor="start">
+    Height: {{ depth }}mm
+  </text>
+
+  <!-- Dimension Lines -->
+  <line x1="50" y1="40" x2="150" y2="40" stroke="black" marker-start="url(#dash)" marker-end="url(#dash)"/>
+  <line x1="160" y1="50" x2="160" y2="150" stroke="black" marker-start="url(#dash)" marker-end="url(#dash)"/>
+
+  <!-- Arrow Definitions -->
+  <defs>
+    <marker id="dash" markerWidth="4" markerHeight="12" refX="0" refY="0"
+            viewBox="-2 -6 4 12" markerUnits="userSpaceOnUse" orient="auto">
+      <rect x="-1" y="-5" width="2" height="10"/>
+    </marker>
+  </defs>
+</svg>

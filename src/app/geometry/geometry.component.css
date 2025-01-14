@@ -1,0 +1,9 @@
+.geometry-container {
+  width: 600px;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

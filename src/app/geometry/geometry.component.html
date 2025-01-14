@@ -1,9 +1,54 @@
 <h1>Part Selection</h1>
 <mat-form-field>
   <mat-label>Beams</mat-label>
-  <mat-select  [(value)]="selectedBeam">
+  <mat-select  [(ngModel)]="selectedBeam" (selectionChange)="onBeamSelected($event)">
     <mat-option *ngFor="let beam of beamList" [value]="beam">
       {{ beam }}
     </mat-option>
   </mat-select>
 </mat-form-field>
+
+<div *ngIf="selectedBeam === 'Rectangular'">
+  <app-rectangular-beam-inputs>
+  </app-rectangular-beam-inputs>
+  <app-rectangular-beam-image>
+  </app-rectangular-beam-image>
+</div>
+
+<div  *ngIf="selectedBeam === 'I Beam'">
+  <svg class="i_beam_image" width="300" height="200" viewBox="0 0 300 200" style="border: 1px solid black;">
+    <!-- Web of I-Beam -->
+    <rect x="87.5" y="70" width="25" height="100" fill="lightgray" stroke-width="2" />
+
+    <!-- Flanges of I-Beam -->
+    <rect x="75" y="50" width="50" height="20" fill="lightgray" stroke-width="2" />
+    <rect x="75" y="170" width="50" height="20" fill="lightgray" stroke-width="2" />
+
+    <!-- Dimension Labels -->
+    <!-- Vertical Flange Dimensions -->
+    <text x="15" y="100" transform="rotate(-90, 15, 100)" text-anchor="end">
+      Height: {{ 20 }} mm
+    </text>
+    <text x="265" y="100" transform="rotate(-90, 265, 100)" text-anchor="start">
+      Height: {{ 20 }} mm
+    </text>
+
+    <!-- Horizontal Flange Dimensions -->
+    <text x="100" y="30" text-anchor="middle">
+      Width: {{ 20 }} mm
+    </text>
+
+    <!-- Dimension Lines -->
+    <line x1="75" y1="40" x2="125" y2="40" stroke="black" marker-start="url(#dash)" marker-end="url(#dash)"/>
+    <line x1="65" y1="170" x2="65" y2="190" stroke="black" marker-start="url(#dash)" marker-end="url(#dash)"/>
+    <line x1="135" y1="50" x2="135" y2="190" stroke="black" marker-start="url(#dash)" marker-end="url(#dash)"/>
+
+    <!-- Arrow Definitions -->
+    <defs>
+      <marker id="dash" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="black" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
