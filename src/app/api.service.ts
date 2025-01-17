@@ -18,4 +18,10 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}beams`);
   }
 
+  sendData<T>(endpoint: string, data: T): Observable<any> {
+    return this.http.post(`${this.baseUrl}${endpoint}`, data, {
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
 }
