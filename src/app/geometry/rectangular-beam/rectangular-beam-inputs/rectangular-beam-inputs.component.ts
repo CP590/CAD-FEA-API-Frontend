@@ -64,10 +64,7 @@ export class RectangularBeamInputsComponent implements OnInit {
     }
   }
     sendData() {
-      console.log(this.rectangularBeamData);
-      //const formData = this.rectangularBeamForm.value;
       const jsonData = JSON.stringify(this.rectangularBeamData);
-      console.log(jsonData);
       this.apiService.sendData(this.endpoint, jsonData).subscribe({
         next: (response) => console.log('Data send successfully: ', response),
         error: (err) => console.error('Error sending data: ', err),

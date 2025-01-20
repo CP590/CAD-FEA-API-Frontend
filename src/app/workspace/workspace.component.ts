@@ -3,13 +3,15 @@ import {CommunicationService} from '../communication.service';
 import {GeometryComponent} from '../geometry/geometry.component';
 import {HomeComponent} from '../home/home.component';
 import {NgIf} from '@angular/common';
+import {MeshComponent} from '../mesh/mesh.component';
 
 @Component({
   selector: 'app-workspace',
   imports: [
     GeometryComponent,
     HomeComponent,
-    NgIf
+    NgIf,
+    MeshComponent
   ],
   templateUrl: './workspace.component.html',
   styleUrl: './workspace.component.css'
