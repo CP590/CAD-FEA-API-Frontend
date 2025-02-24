@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
         if (response && response[0] && response[0].beam_list) {
           this.beamList = response[0].beam_list
             .map((beam: any[]) => beam[1]);
-          console.log(this.beamList);
         }
       },
       (error) => {

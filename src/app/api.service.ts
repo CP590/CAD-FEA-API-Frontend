@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {catchError, Observable, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +22,18 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}${endpoint}`, data, {
       headers: { 'Content-Type': 'application/json' },
     });
+  }
+
+  getSTLFile(): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}get-stl`, { responseType: 'blob'}).pipe(
+      catchError((error) => {
+        console.error('Error fetching STL file:', error);
+        return throwError(() => new Error(`HTTP Error, status:: ${error.status}`));
+      })
+    );
+  }
+
+  getMeshData(): Observable<any> {
+    return this.http.get(`${this.baseUrl}mesh`);
   }
 }

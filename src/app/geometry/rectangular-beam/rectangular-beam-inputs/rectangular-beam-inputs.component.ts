@@ -26,6 +26,7 @@ import {ApiService} from '../../../api.service';
 export class RectangularBeamInputsComponent implements OnInit {
   @Output() beamWidthChanged = new EventEmitter<number>;
   @Output() beamDepthChanged = new EventEmitter<number>;
+  @Output() beamLengthChanged = new EventEmitter<number>;
 
   private endpoint = 'set_step_parameters'
 
@@ -51,18 +52,39 @@ export class RectangularBeamInputsComponent implements OnInit {
 
   onWidthChanged() {
     this.communicationService.widthChanged.emit(this.rectangularBeamData.width);
+    localStorage.setItem('beamWidth', JSON.stringify(this.rectangularBeamData.width));
   }
 
   onDepthChanged() {
     this.communicationService.depthChanged.emit(this.rectangularBeamData.depth);
+    localStorage.setItem('beamDepth', JSON.stringify(this.rectangularBeamData.depth));
+  }
+
+  onLengthChanged() {
+    this.communicationService.lengthChanged.emit(this.rectangularBeamData.length);
+    localStorage.setItem('beamLength', JSON.stringify(this.rectangularBeamData.length));
   }
 
   ngOnInit() {
     const storedBeam = localStorage.getItem('selectedBeam');
+    const storedWidth = localStorage.getItem('beamWidth');
+    const storedDepth = localStorage.getItem('beamDepth');
+    const storedLength = localStorage.getItem('beamLength');
+
     if (storedBeam) {
-      //this.selectedBeam = JSON.parse(storedBeam);
+      this.rectangularBeamData.cross_section = JSON.parse(storedBeam);
+    }
+    if (storedWidth) {
+      this.rectangularBeamData.width = JSON.parse(storedWidth);
+    }
+    if (storedDepth) {
+      this.rectangularBeamData.depth = JSON.parse(storedDepth);
+    }
+    if (storedLength) {
+      this.rectangularBeamData.length = JSON.parse(storedLength);
     }
   }
+
     sendData() {
       const jsonData = JSON.stringify(this.rectangularBeamData);
       this.apiService.sendData(this.endpoint, jsonData).subscribe({

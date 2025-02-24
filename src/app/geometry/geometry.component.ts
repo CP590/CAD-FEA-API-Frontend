@@ -29,7 +29,6 @@ export class GeometryComponent implements OnInit {
   selectedBeam!: string;
 
     onBeamSelected(event: any) {
-      console.log('Selected Beam:', this.selectedBeam);
       this.selectedBeamChanged.emit(this.selectedBeam);
       localStorage.setItem('selectedBeam', JSON.stringify(this.selectedBeam));
     }

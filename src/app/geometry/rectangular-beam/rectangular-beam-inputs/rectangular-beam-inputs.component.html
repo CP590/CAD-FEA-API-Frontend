@@ -6,15 +6,15 @@
     <mat-card-content>
       <mat-form-field appearance="fill">
         <mat-label>Width (mm)</mat-label>
-        <input matInput type="number" name="width" [(ngModel)]="rectangularBeamData.width" (input)="onWidthChanged()"/>
+        <input matInput type="number" name="width" [(ngModel)]="rectangularBeamData.width" (selectionchange)="onWidthChanged()"/>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Depth (mm)</mat-label>
-        <input matInput type="number" name="depth" [(ngModel)]="rectangularBeamData.depth" (input)="onDepthChanged()"/>
+        <input matInput type="number" name="depth" [(ngModel)]="rectangularBeamData.depth" (selectionchange)="onDepthChanged()"/>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Length (mm)</mat-label>
-        <input matInput type="number" name="length" [(ngModel)]="rectangularBeamData.length"/>
+        <input matInput type="number" name="length" [(ngModel)]="rectangularBeamData.length" (selectionchange)="onLengthChanged()"/>
       </mat-form-field>
     </mat-card-content>
   </mat-card>
